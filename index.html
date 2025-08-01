@@ -1,25 +1,191 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>موقعي الشخصي</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة الابتكار - دعم المبدعين والمبتكرين</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            background-color: #f2f2f2;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            padding: 100px;
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+        body { font-family: 'Cairo', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-        h1 {
-            color: #0066cc;
+        .pulse-animation { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
-        p {
-            color: #333;
+        .innovation-icon {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
     </style>
 </head>
-<body>
-    <h1>مرحباً بك في موقعي 🌟</h1>
-    <p>تم إنشاء هذا الموقع باستخدام HTML فقط!</p>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md p-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-gray-800">منصة الابتكار</h1>
+        <nav class="hidden md:flex space-x-4 rtl:space-x-reverse">
+            <a href="#services" class="text-gray-600 hover:text-indigo-600">خدماتنا</a>
+            <a href="#stats" class="text-gray-600 hover:text-indigo-600">إحصائيات</a>
+            <a href="#contact" class="text-gray-600 hover:text-indigo-600">اتصل بنا</a>
+        </nav>
+        <button class="md:hidden text-indigo-600">القائمة</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="text-center py-16 gradient-bg text-white">
+        <h2 class="text-4xl font-bold mb-4">ندعم المبتكرين والمخترعين</h2>
+        <p class="mb-6 text-lg">منصة تهدف إلى تحويل الأفكار إلى إنجازات</p>
+        <button onclick="scrollToSection('contact')" class="bg-white text-indigo-600 font-bold py-2 px-6 rounded shadow">تواصل معنا</button>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-16 px-4 md:px-20">
+        <h3 class="text-3xl font-bold text-center mb-12">خدماتنا</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                <h4 class="text-xl font-bold mb-2">تحليل الأفكار</h4>
+                <p>نساعدك في تقييم واختبار أفكارك الابتكارية قبل الانطلاق.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                <h4 class="text-xl font-bold mb-2">حماية الملكية الفكرية</h4>
+                <p>نوجهك لتسجيل براءات الاختراع والحقوق الفكرية.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                <h4 class="text-xl font-bold mb-2">ربط بالجهات الداعمة</h4>
+                <p>نربطك مع الحاضنات والمسرعات والمستثمرين.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section id="stats" class="gradient-bg text-white py-16 px-4 md:px-20 text-center">
+        <h3 class="text-3xl font-bold mb-12">منصة واعدة بالأرقام</h3>
+        <div class="grid md:grid-cols-4 gap-8">
+            <div>
+                <div id="projects-count" class="text-4xl font-bold">0</div>
+                <p>مشروع مبتكر</p>
+            </div>
+            <div>
+                <div id="entrepreneurs-count" class="text-4xl font-bold">0</div>
+                <p>رائد أعمال</p>
+            </div>
+            <div>
+                <div id="funding-count" class="text-4xl font-bold">0</div>
+                <p>جهة تمويل</p>
+            </div>
+            <div>
+                <div id="success-count" class="text-4xl font-bold">0</div>
+                <p>قصة نجاح</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-16 px-4 md:px-20">
+        <h3 class="text-3xl font-bold text-center mb-12">تواصل معنا</h3>
+        <form class="max-w-2xl mx-auto bg-white p-6 rounded shadow-md space-y-4">
+            <input type="text" placeholder="الاسم الكامل" class="w-full border rounded p-3">
+            <input type="email" placeholder="البريد الإلكتروني" class="w-full border rounded p-3">
+            <select class="w-full border rounded p-3">
+                <option>اختر الخدمة</option>
+                <option>تحليل الفكرة</option>
+                <option>حماية فكرية</option>
+                <option>الربط بالجهات</option>
+            </select>
+            <textarea placeholder="رسالتك" rows="4" class="w-full border rounded p-3"></textarea>
+            <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded">إرسال</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 bg-gray-100 text-sm text-gray-600">
+        © 2025 منصة الابتكار - جميع الحقوق محفوظة
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function animateCounter(id, target, duration = 2000) {
+            const el = document.getElementById(id);
+            let current = 0;
+            const step = target / (duration / 16);
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    el.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    el.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter('projects-count', 250);
+                    animateCounter('entrepreneurs-count', 500);
+                    animateCounter('funding-count', 50);
+                    animateCounter('success-count', 150);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const stats = document.querySelector('.gradient-bg:has(#projects-count)');
+            if (stats) observer.observe(stats);
+        });
+
+        document.querySelector('form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const service = this.querySelector('select').value;
+            const message = this.querySelector('textarea').value;
+            if (!name || !email || !service || !message) {
+                alert('يرجى ملء جميع الحقول المطلوبة');
+                return;
+            }
+            alert('شكراً لك! تم إرسال رسالتك بنجاح. سنتواصل معك قريباً.');
+            this.reset();
+        });
+
+        document.querySelector('.md\\:hidden')?.addEventListener('click', function() {
+            const menu = document.querySelector('.hidden.md\\:flex');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+                menu.classList.toggle('flex-col');
+                menu.classList.toggle('absolute');
+                menu.classList.toggle('top-full');
+                menu.classList.toggle('left-0');
+                menu.classList.toggle('right-0');
+                menu.classList.toggle('bg-white');
+                menu.classList.toggle('shadow-lg');
+                menu.classList.toggle('p-4');
+            }
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('shadow-xl');
+            } else {
+                header.classList.remove('shadow-xl');
+            }
+        });
+    </script>
 </body>
 </html>
